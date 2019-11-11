@@ -21,20 +21,15 @@ else {
 //
 // Get data from Yaklass
 //
-//try {
-//  $spider = new Spider("credentials.json");
-//  $html = $spider->getTopPage();
-//}
-//catch (Exception $e) {
-//  echo "Unable to fetch data:\n\t" . $e->getMessage();
-//  exit(1);
-//}
-//unset($spider);
-//
-//$html = file_put_contents('1.html', $html);
-//exit(1);
-
-$html = file_get_contents('1.html');
+try {
+  $spider = new Spider("credentials.json");
+  $html = $spider->getTopPage();
+}
+catch (Exception $e) {
+  echo "Unable to fetch data:\n\t" . $e->getMessage();
+  exit(1);
+}
+unset($spider);
 
 //
 // Parse data with XPath
@@ -61,18 +56,9 @@ try {
 try {
   $storage = new StatsStorage();
   $storage->save($stats);
+  echo "New data are saved.";
 } catch (Exception $e) {
   echo "Error(s): " . $e->getMessage();
   exit(1);
 }
-//$fname = 'stats_' . date('Y-m-d H_m_s') . '.csv';
-//$fp = fopen($fname, 'w');
-//$header = ['id', 'name', 'points'];
-//// Write header row
-//fputcsv($fp, array_combine($header, $header));
-//
-//foreach ($stats as $fields) {
-//  fputcsv($fp, $fields);
-//}
-//fclose($fp);
-//echo "Generated file: " . $fname;
+

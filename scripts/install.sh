@@ -13,4 +13,4 @@ mkdir -p "$dir" || err "Cannot create directory: $dir/"
 cd "$dir" || err "Directory not found: $dir"
 wget -O selenium.jar "$SELENIUM_URL"
 wget -O chromedriver.zip "$CHROMEDRIVER_URL"
-unzip chromedriver.zip && rm chromedriver.zip
+unzip -o chromedriver.zip && rm chromedriver.zip
